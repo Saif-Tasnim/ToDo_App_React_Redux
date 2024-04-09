@@ -1,9 +1,11 @@
+import DataFetching from "../page/DataFetching";
 import ToDo from "../page/ToDo";
 
 const Main = () => {
     return (
         <div>
-            <ToDo />
+            {/* <ToDo /> */}
+            <DataFetching />
         </div>
     );
 };
