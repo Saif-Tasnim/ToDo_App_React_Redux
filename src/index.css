@@ -9,3 +9,7 @@ body{
 .section-gap{
     @apply my-24
 }
+
+input{
+    @apply border border-pink-500 rounded-md my-3
+}

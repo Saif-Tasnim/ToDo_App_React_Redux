@@ -12,10 +12,8 @@ const initialState = {
       assignedTo: "Mir Hussain",
       priority: "high",
     },
-    
   ],
 };
-
 
 const taskSlice = createSlice({
   name: "tasks",
@@ -24,10 +22,21 @@ const taskSlice = createSlice({
     addTask: (state, { payload }) => {
       if (state.tasks.length === 0) {
         state.tasks.push({ id: 1, status: "pending", ...payload });
+      } else {
+        const lastValue = state.tasks.at(-1);
+        state.tasks.push({
+          id: lastValue.id + 1,
+          status: "pending",
+          ...payload,
+        });
       }
+    },
+    updateTask: (state, { payload }) => {
+      const updatingData = state.tasks.find((st) => st.id === payload.id);
+      updatingData.status = payload.status;
     },
   },
 });
 
-export const { addTask } = taskSlice.actions;
+export const { addTask, updateTask } = taskSlice.actions;
 export default taskSlice.reducer;
